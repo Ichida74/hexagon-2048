@@ -5,7 +5,7 @@ export default function Status (props) {
 
   return (
     <div className="status">
-      Game status: <span data-status={status}>{status}</span>
+      Game status: <span data-status={status.title}>{status.title}</span>
     </div>
   )
 }
