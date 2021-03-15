@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>🎃 Hexagonal 2048 🎃</title>
+    <style>
+      html, body, #root {
+        font-family: sans-serif;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      dl {
+        margin: 0;
+      }
+      dt {
+        display: inline-block;
+        padding-top: 5px;
+      }
+      dd {
+        margin-inline-start: 0;
+        display: inline-block;
+      }
+      main {
+        display: grid;
+        margin: auto;
+        max-width: 500px;
+        grid-template-areas:
+        "menu"
+        "game"
+        "status";
+      }
+      .menu {
+        border-radius: 4px;
+        background-color: rgb(249, 245, 241);
+        border: 1px solid rgb(233, 229, 225);
+        grid-area: menu / menu / menu / menu;
+        margin: 10px 0px;
+      }
+      .menu-item {
+        padding: 10px 10px 8px;
+      }
+      button {
+        border-width: 0px;
+        background-color: rgb(102, 102, 255);
+        border-color: rgb(102, 102, 255);
+        color: rgb(255, 255, 255);
+        font-size: 16px;
+        padding: 3px 10px 1px;
+        margin: 0px 5px;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      .status {
+        padding: 20px 10px 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <link rel="stylesheet" href="styles.css">
+  </body>
+</html>
