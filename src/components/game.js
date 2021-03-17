@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 export default function Game (props) {
   const { level, cells } = props
@@ -9,13 +9,14 @@ export default function Game (props) {
     const currentCells = cells.filter(cell => cell.x === x)
     let y = level - 1 - (x <= 0 ? 0 : x)
 
-    for (let row = 0; row < 2 * level - 1 - Math.abs(x); row++) {
+    // Проходим по всем ячейкам в столбце
+    for (let cellInColumn = 0; cellInColumn < 2 * level - 1 - Math.abs(x); cellInColumn++) {
       const z = 0 - x - y
-      const currentCell = currentCells.filter(cell => cell.y === y && cell.z === z)[0]
+      const currentCell = currentCells.find(cell => cell.y === y && cell.z === z)
       const value = (currentCell && currentCell.value) || 0
 
-      column.push(<div key={row} className="hexagon" data-value={value} data-x={x} data-y={y} data-z={z}>
-        <span className="value">{value}</span>
+      column.push(<div key={cellInColumn} className="hexagon" data-value={value} data-x={x} data-y={y} data-z={z}>
+        {value ? <span className="value">{value}</span> : <Fragment />}
       </div>)
 
       y--
