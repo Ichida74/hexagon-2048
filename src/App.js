@@ -100,7 +100,7 @@ function App () {
         startGame(3)
         break
 
-      case '$test4':
+      case '#test4':
         startGame(4)
         break
     }
@@ -108,6 +108,7 @@ function App () {
 
   useEventListener('keydown', keyDownHandler)
   useEventListener('load', onLoadHandler)
+  useEventListener('hashchange', onLoadHandler)
 
   const sendRequest = (server, level, cells) => {
     fetch(server + '/' + level, {
