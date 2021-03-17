@@ -2,11 +2,13 @@ const move = (cells, firstAxis, secondAxis, thirdAxis, level) => {
   let newCells = []
   let hasMoved = false
 
+  // проходим по всем колонкам
   for (let currentColumn = level - 1; currentColumn > -level; currentColumn--) {
     const currentCells = cells.filter(cell => cell[firstAxis] === currentColumn)
     let secondAxisMax = level - 1 - (currentColumn <= 0 ? 0 : currentColumn)
     let secondAxisCurrent = secondAxisMax
 
+    // проходим по всем строкам в колонке
     for (let row = 0; row < 2 * level - 1 - Math.abs(currentColumn); row++) {
       const thirdAxisCurrent = 0 - currentColumn - secondAxisCurrent
       const currentCellIndex = currentCells.findIndex(cell =>
@@ -16,6 +18,7 @@ const move = (cells, firstAxis, secondAxis, thirdAxis, level) => {
       if (currentCellIndex !== -1) {
         let currentCell = currentCells.splice(currentCellIndex, 1)[0]
 
+        // пытаемся переместить значение в следующую ячейку
         for (let downSecondAxis = secondAxisCurrent + 1; downSecondAxis <= secondAxisMax; downSecondAxis++) {
           const downCellIndex = currentCells.findIndex(cell =>
             cell[secondAxis] === downSecondAxis &&

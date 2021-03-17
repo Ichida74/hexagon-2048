@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect, useRef, useCallback } from 'react'
+import React, { Fragment, useState, useEffect, useCallback, useRef } from 'react'
 import Menu from './components/menu'
 import Status from './components/status'
 import Game from './components/game'
@@ -33,16 +33,16 @@ function useEventListener (eventName, handler, element = window) {
 function App () {
   const [level, setLevel] = useState(0)
   const [status, setStatus] = useState(statuses.roundSelect)
-  const [server, setServer] = useState(servers[1].value)
+  const [server, setServer] = useState(servers[0].value)
   const [cells, setCells] = useState([])
   const [cellsCount, setCellsCount] = useState(0)
 
-  const startGame = (newLevel) => {
+  const startGame = useCallback((newLevel) => {
     setStatus(statuses.playing)
     setLevel(newLevel)
     setCells([])
-    sendRequest(server, newLevel, [])
-  }
+    sendRequestToRNGServer([])
+  }, [server])
 
   const keyDownHandler = useCallback(
     (event) => {
@@ -83,41 +83,23 @@ function App () {
 
         if (afterMove && afterMove.hasMoved) {
           setCells(afterMove.newCells)
-          sendRequest(server, level, afterMove.newCells)
+          sendRequestToRNGServer(afterMove.newCells)
         }
       }
     },
-    [status, cells]
+    [status, cells, level]
   )
 
-  const onLoadHandler = () => {
-    switch (window.location.hash) {
-      case '#test2':
-        startGame(2)
-        break
-
-      case '#test3':
-        startGame(3)
-        break
-
-      case '#test4':
-        startGame(4)
-        break
-    }
-  }
-
   useEventListener('keydown', keyDownHandler)
-  useEventListener('load', onLoadHandler)
-  useEventListener('hashchange', onLoadHandler)
 
-  const sendRequest = (server, level, cells) => {
+  const sendRequestToRNGServer = useCallback((cells) => {
     fetch(server + '/' + level, {
       method: 'POST',
       body: JSON.stringify(cells)
     }).then(response => response.json())
       .then(newCells => setCells(cells.concat(newCells)))
       .catch(() => setStatus(statuses.networkUnavailable))
-  }
+  }, [server, level])
 
   // проверка на конец игры
   useEffect(() => {
@@ -134,9 +116,27 @@ function App () {
     }
   }, [level, cells, cellsCount])
 
+  // пересчитываем общее количество ячеек после изменения уровня
   useEffect(() => {
     setCellsCount(3 * Math.pow(level, 2) - 3 * level + 1)
-  }, [level, setCellsCount])
+  }, [level])
+
+  // запускаем игру сразу, если это необходимо
+  useEffect(() => {
+    switch (window.location.hash) {
+      case '#test2':
+        startGame(2)
+        break
+
+      case '#test3':
+        startGame(3)
+        break
+
+      case '#test4':
+        startGame(4)
+        break
+    }
+  }, [])
 
   return (
     <main>
