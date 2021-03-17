@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/hexagon-2048/static/js/main.b9164413.chunk.js",
-    "main.js.map": "/hexagon-2048/static/js/main.b9164413.chunk.js.map",
-    "runtime-main.js": "/hexagon-2048/static/js/runtime-main.60c62000.js",
-    "runtime-main.js.map": "/hexagon-2048/static/js/runtime-main.60c62000.js.map",
-    "static/js/2.733b05b9.chunk.js": "/hexagon-2048/static/js/2.733b05b9.chunk.js",
-    "static/js/2.733b05b9.chunk.js.map": "/hexagon-2048/static/js/2.733b05b9.chunk.js.map",
-    "static/js/3.d162ee4c.chunk.js": "/hexagon-2048/static/js/3.d162ee4c.chunk.js",
-    "static/js/3.d162ee4c.chunk.js.map": "/hexagon-2048/static/js/3.d162ee4c.chunk.js.map",
+    "main.js": "/hexagon-2048/static/js/main.1a7e2c6f.chunk.js",
+    "main.js.map": "/hexagon-2048/static/js/main.1a7e2c6f.chunk.js.map",
+    "runtime-main.js": "/hexagon-2048/static/js/runtime-main.5f62da56.js",
+    "runtime-main.js.map": "/hexagon-2048/static/js/runtime-main.5f62da56.js.map",
+    "static/js/2.7635f3af.chunk.js": "/hexagon-2048/static/js/2.7635f3af.chunk.js",
+    "static/js/2.7635f3af.chunk.js.map": "/hexagon-2048/static/js/2.7635f3af.chunk.js.map",
+    "static/js/3.de112aa2.chunk.js": "/hexagon-2048/static/js/3.de112aa2.chunk.js",
+    "static/js/3.de112aa2.chunk.js.map": "/hexagon-2048/static/js/3.de112aa2.chunk.js.map",
     "index.html": "/hexagon-2048/index.html",
-    "static/js/2.733b05b9.chunk.js.LICENSE.txt": "/hexagon-2048/static/js/2.733b05b9.chunk.js.LICENSE.txt"
+    "static/js/2.7635f3af.chunk.js.LICENSE.txt": "/hexagon-2048/static/js/2.7635f3af.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.60c62000.js",
-    "static/js/2.733b05b9.chunk.js",
-    "static/js/main.b9164413.chunk.js"
+    "static/js/runtime-main.5f62da56.js",
+    "static/js/2.7635f3af.chunk.js",
+    "static/js/main.1a7e2c6f.chunk.js"
   ]
 }
