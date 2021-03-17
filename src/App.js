@@ -41,7 +41,7 @@ function App () {
     setStatus(statuses.playing)
     setLevel(newLevel)
     setCells([])
-    sendRequestToRNGServer([])
+    sendRequestToRNGServer(newLevel, [])
   }, [server])
 
   const keyDownHandler = useCallback(
@@ -83,7 +83,7 @@ function App () {
 
         if (afterMove && afterMove.hasMoved) {
           setCells(afterMove.newCells)
-          sendRequestToRNGServer(afterMove.newCells)
+          sendRequestToRNGServer(level, afterMove.newCells)
         }
       }
     },
@@ -92,7 +92,7 @@ function App () {
 
   useEventListener('keydown', keyDownHandler)
 
-  const sendRequestToRNGServer = useCallback((cells) => {
+  const sendRequestToRNGServer = useCallback((level, cells) => {
     fetch(server + '/' + level, {
       method: 'POST',
       body: JSON.stringify(cells)
