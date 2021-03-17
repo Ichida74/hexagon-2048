@@ -44,7 +44,7 @@ function App () {
     sendRequest(server, newLevel, [])
   }
 
-  const handler = useCallback(
+  const keyDownHandler = useCallback(
     (event) => {
       if (status.title === statuses.playing.title) {
         let afterMove = null
@@ -90,7 +90,24 @@ function App () {
     [status, cells]
   )
 
-  useEventListener('keydown', handler)
+  const onLoadHandler = () => {
+    switch (window.location.hash) {
+      case '#test2':
+        startGame(2)
+        break
+
+      case '#test3':
+        startGame(3)
+        break
+
+      case '$test4':
+        startGame(4)
+        break
+    }
+  }
+
+  useEventListener('keydown', keyDownHandler)
+  useEventListener('load', onLoadHandler)
 
   const sendRequest = (server, level, cells) => {
     fetch(server + '/' + level, {
